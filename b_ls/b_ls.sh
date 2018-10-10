@@ -10,6 +10,7 @@ if [ -e "$dirName" ] ; then
     cp -- "$reftest" "$dirName"
     cd -- "$dirName"
     rm -f refLog yourLog
+    norminette -R CheckForbiddenSourceHeader
     if [ -e "author" ] ; then
         echo "found author file"
     else

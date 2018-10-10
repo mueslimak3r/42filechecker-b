@@ -30,7 +30,7 @@ int			main(void)
 		i--;
 	}*/
 
-    b_printf("m: %d %d %o %x %u %u\n", max, min, 2147483647, 2147483647, UINT_MAX, 2147483647);
+    b_printf("%d %d %o %x %u %u\n", max, min, 2147483647, 2147483647, UINT_MAX, 2147483647);
 	b_printf("%d %d %o %x %u\n\n", max, min, 2000, 2000, UINT_MAX);
 	b_printf("Zeros: %d %i %o %x %u\n", zero, zero, zero, zero, zero);
 	b_printf("%p %s %c %c\n", str, str, str[2], str[25]);
