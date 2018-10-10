@@ -2,12 +2,8 @@
 
 # open directory and check makefile
 
-yourtest="b_ls/main.c"
-reftest="b_ls/refmain.c"
 dirName="$1"
 if [ -e "$dirName" ] ; then
-    cp -- "$yourtest" "$dirName"
-    cp -- "$reftest" "$dirName"
     cd -- "$dirName"
     rm -f refLog yourLog
     norminette -R CheckForbiddenSourceHeader

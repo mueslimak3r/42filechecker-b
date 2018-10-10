@@ -7,11 +7,11 @@ reftest="b_printf/refmain.c"
 dirName="$1"
 echo "Make sure your header file is includes/b_printf.h!!!"
 if [ -e "$dirName" ] ; then
+    norminette -R CheckForbiddenSourceHeader
     cp -- "$yourtest" "$dirName"
     cp -- "$reftest" "$dirName"
     cd -- "$dirName"
     rm -f refLog yourLog
-    norminette -R CheckForbiddenSourceHeader
     if [ -e "author" ] ; then
         echo "found author file"
     else
