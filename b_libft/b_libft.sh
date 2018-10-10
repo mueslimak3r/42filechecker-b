@@ -37,15 +37,15 @@ fi
 if gcc -g -fsanitize=address -Wall -Wextra -Werror yourmain.c libft.a -o yourProg ; then
     if ./yourProg | cat -e > yourLog; then
         gcc -g -fsanitize=address -Wall -Wextra -Werror refmain.c -o refProg
-        rm -f yourmain.c refmain.c
+        rm -f yourmain.c refmain.c yourProg.dSYM
     else
         echo "runtime error!"
-        rm -f yourmain.c refmain.c
+        rm -f yourmain.c refmain.c yourProg.dSYM
         exit 1
     fi
 else
     echo "compile error!"
-    rm -f yourmain.c refmain.c
+    rm -f yourmain.c refmain.c yourProg.dSYM
     exit 1
 fi
 
@@ -58,4 +58,4 @@ if [ "$DIFF" == "" ] ; then
 else
     echo "Outputs don't match! Check log files in project directory"
 fi
-rm -f refProg yourProg
+rm -f refProg yourProg yourProg.dSYM

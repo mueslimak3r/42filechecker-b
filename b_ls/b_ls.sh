@@ -36,6 +36,7 @@ if ./b_ls | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> yourLog; then
     ls | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> refLog
 else
     echo "runtime error!"
+    rm -f b_ls.dSYM
     exit 1
 fi
 
@@ -43,6 +44,7 @@ if ./b_ls -atl| cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> yourLog; th
     ls -atl | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> refLog
 else
     echo "runtime error!"
+    rm -f b_ls.dSYM
     exit 1
 fi
 
@@ -50,6 +52,7 @@ if ./b_ls -atlr| cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> yourLog; t
     ls -atlr | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> refLog
 else
     echo "runtime error!"
+    rm -f b_ls.dSYM
     exit 1
 fi
 
@@ -61,3 +64,4 @@ if [ "$DIFF" == "" ] ; then
 else
     echo "Outputs don't match! Check log files in project directory"
 fi
+rm -f b_ls.dSYM
