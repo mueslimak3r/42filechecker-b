@@ -10,6 +10,9 @@ int         main(void)
     char    *top;
     int     i;
 
+    // the basics
+    puts("\n\nbasic functions\n");
+
     putchar('c');
     putchar(0);
     if (isdigit('9') != 0)
@@ -19,7 +22,7 @@ int         main(void)
     printf("toupper: %c, tolower: %c\n", toupper(113), tolower(81));
 
     // strcmp section
-    printf("\n\nstrcmp\n\n");
+    printf("\n\nstrcmp tests\n\n");
 
     i = strcmp("", "abc");
     printf("strcmp: %d\n", ((i < 0) ? -1 : ((i > 0) ? 1 : 0)));
@@ -39,6 +42,11 @@ int         main(void)
     str = top;
     str = memset(str, 'Z', (int)strlen(str));
     printf("%s\n", str);
+    str = strcpy(str, "Hello #World");
+    printf("%s\n", str);
+    str = memset(str, 'Z', (int)strlen(str));
+    str = strncpy(str, "Hello #World", (int)strlen(str));
+    printf("%s\n", str); 
     free (str);
     return (0);
 }

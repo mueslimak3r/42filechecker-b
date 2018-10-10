@@ -8,13 +8,16 @@ int     main(void)
     char    *top;
     int     i;
 
+    // the basics
+    ft_putstr("\n\nbasic functions\n\n");
+
     ft_putchar('c');
     ft_putchar(0);
     printf("isdigit: %d\n", ft_isdigit('9'));
     printf("toupper: %c, tolower: %c\n", ft_toupper(113), ft_tolower(81));
 
     // strcmp section
-    printf("\n\nstrcmp\n\n");
+    printf("\n\nstrcmp tests\n\n");
 
     i = ft_strcmp("", "abc");
     printf("strcmp: %d\n", ((i < 0) ? -1 : ((i > 0) ? 1 : 0)));
@@ -34,6 +37,11 @@ int     main(void)
     printf("strchr: %c%c\n", *str, *(str + 1));
     str = top;
     str = ft_memset(str, 'Z', (int)ft_strlen(str));
+    printf("%s\n", str);
+    str = ft_strcpy(str, "Hello #World");
+    printf("%s\n", str);
+    str = ft_memset(str, 'Z', (int)ft_strlen(str));
+    str = ft_strncpy(str, "Hello #World", (int)ft_strlen(str));
     printf("%s\n", str);
     free (str);
     return (0);
