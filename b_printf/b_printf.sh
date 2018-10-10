@@ -55,7 +55,7 @@ fi
 ./refProg | cat -e > refLog
 DIFF=$(diff yourLog refLog)
 if [ "$DIFF" == "" ] ; then
-    echo "pass!"
+    echo "pass! Please manually check %p flag."
 else
     echo "Outputs don't match! Check log files in project directory"
 fi

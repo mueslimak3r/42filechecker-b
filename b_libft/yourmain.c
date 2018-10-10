@@ -21,7 +21,6 @@ int     main(void)
     i = ft_strcmp("abcdefzfd", "abcdefse");
     printf("strcmp: %d\n", ((i < 0) ? -1 : ((i > 0) ? 1 : 0)));
 
-
     //string stuff
     printf("\n\nstring stuff\n\n");
 
