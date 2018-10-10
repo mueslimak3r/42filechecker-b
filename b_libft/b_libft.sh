@@ -2,7 +2,7 @@
 
 # open directory and check makefile
 
-yourtest="b_libft/main.c"
+yourtest="b_libft/yourmain.c"
 reftest="b_libft/refmain.c"
 dirName="$1"
 if [ -e "$dirName" ] ; then
@@ -25,6 +25,7 @@ if [ -e "$dirName" ] ; then
         fi
     else
         echo "make re error!"
+        rm -f yourmain.c refmain.c
         exit 1
     fi
 else
@@ -33,16 +34,18 @@ fi
 
 # compile and eval main
 
-if gcc -g -fsanitize=address -Wall -Wextra -Werror main.c libft.a -o yourProg ; then
+if gcc -g -fsanitize=address -Wall -Wextra -Werror yourmain.c libft.a -o yourProg ; then
     if ./yourProg | cat -e > yourLog; then
         gcc -g -fsanitize=address -Wall -Wextra -Werror refmain.c -o refProg
-        rm -f main.c refmain.c
+        rm -f yourmain.c refmain.c
     else
         echo "runtime error!"
+        rm -f yourmain.c refmain.c
         exit 1
     fi
 else
     echo "compile error!"
+    rm -f yourmain.c refmain.c
     exit 1
 fi
 
