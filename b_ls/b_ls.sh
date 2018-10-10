@@ -32,24 +32,24 @@ touch refLog
 
 # tests
 
-if ./b_ls | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> yourLog; then
-    ls | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> refLog
+if ./b_ls -- ~/ | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> yourLog; then
+    ls -- ~/ | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> refLog
 else
     echo "runtime error!"
     rm -f b_ls.dSYM
     exit 1
 fi
 
-if ./b_ls -atl| cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> yourLog; then
-    ls -atl | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> refLog
+if ./b_ls -atl ~/ | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> yourLog; then
+    ls -atl -- ~/ | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> refLog
 else
     echo "runtime error!"
     rm -f b_ls.dSYM
     exit 1
 fi
 
-if ./b_ls -atlr| cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> yourLog; then
-    ls -atlr | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> refLog
+if ./b_ls -atlr -- ~/ | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> yourLog; then
+    ls -atlr -- ~/ | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> refLog
 else
     echo "runtime error!"
     rm -f b_ls.dSYM
