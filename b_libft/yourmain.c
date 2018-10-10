@@ -8,11 +8,6 @@ int     main(void)
     char    *top;
     int     i;
 
-    // the basics
-    ft_putstr("\n\nbasic functions\n\n");
-
-    ft_putchar('c');
-    ft_putchar(0);
     printf("isdigit: %d\n", ft_isdigit('9'));
     printf("toupper: %c, tolower: %c\n", ft_toupper(113), ft_tolower(81));
 

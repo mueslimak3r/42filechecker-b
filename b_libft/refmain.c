@@ -10,11 +10,6 @@ int         main(void)
     char    *top;
     int     i;
 
-    // the basics
-    puts("\n\nbasic functions\n");
-
-    putchar('c');
-    putchar(0);
     if (isdigit('9') != 0)
         printf("isdigit: 1\n");
     else
