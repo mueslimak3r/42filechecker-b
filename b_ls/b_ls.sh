@@ -27,6 +27,9 @@ else
     echo "Project not found! Use ./run [projName] [projPath]"
 fi
 
+touch yourLog
+touch refLog
+
 # tests
 
 if ./b_ls | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> yourLog; then
@@ -45,13 +48,6 @@ fi
 
 if ./b_ls -atlr| cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> yourLog; then
     ls -atlr | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> refLog
-else
-    echo "runtime error!"
-    exit 1
-fi
-
-if ./b_ls -- -| cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> yourLog; then
-    ls -- -| cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> refLog
 else
     echo "runtime error!"
     exit 1
