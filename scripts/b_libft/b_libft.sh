@@ -9,12 +9,12 @@ yourtest="scripts/b_libft/yourmain.c"
 reftest="scripts/b_libft/refmain.c"
 dirName="$1"
 if [ -e "$dirName" ] ; then
-    sh scripts/norme.sh "$1"
+    sh scripts/norme.sh "$1" && echo
     cp -- "$yourtest" "$dirName"
     cp -- "$reftest" "$dirName"
     cd -- "$dirName"
     if [ -e "author" ] ; then
-        echo -e "${green}found author file${NC}"
+        echo "${green}found author file${NC}"
     else
         echo "${red}missing author file!${NC}"
     fi
