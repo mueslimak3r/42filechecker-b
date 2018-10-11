@@ -6,7 +6,7 @@ yourtest="b_libft/yourmain.c"
 reftest="b_libft/refmain.c"
 dirName="$1"
 if [ -e "$dirName" ] ; then
-    sh norme.sh "$1"
+    sh scripts/norme.sh "$1"
     cp -- "$yourtest" "$dirName"
     cp -- "$reftest" "$dirName"
     cd -- "$dirName"

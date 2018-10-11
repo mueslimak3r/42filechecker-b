@@ -4,7 +4,7 @@
 
 dirName="$1"
 if [ -e "$dirName" ] ; then
-    sh norme.sh "$1"
+    sh scripts/norme.sh "$1"
     cd "$dirName"
     if [ -e "author" ] ; then
         echo "found author file"
