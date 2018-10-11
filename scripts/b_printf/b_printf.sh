@@ -10,31 +10,31 @@ reftest="scripts/b_printf/refmain.c"
 dirName="$1"
 if [ -e "$dirName" ] ; then
     sh scripts/norme.sh "$1"
-    echo && echo && echo "${red}Make sure your header file is includes/b_printf.h!!${nc}"
+    echo && echo && echo -e "${red}Make sure your header file is includes/b_printf.h!!${nc}"
     echo
     cp -- "$yourtest" "$dirName"
     cp -- "$reftest" "$dirName"
     cd -- "$dirName"
     if [ -e "author" ] ; then
-        echo "${green}found author file${nc}"
+        echo -e "${green}found author file${nc}"
     else
-        echo "${red}missing author file!${nc}"
+        echo -e "${red}missing author file!${nc}"
     fi
     if make re >/dev/null ; then
         if make fclean >/dev/null ; then
-            echo "${green}passed makefile test${nc}"
+            echo -e "${green}passed makefile test${nc}"
             make re >/dev/null && make clean >/dev/null
         else
-            echo "${red}make fclean error!${nc}"
+            echo -e "${red}make fclean error!${nc}"
         fi
     else
-        echo "${red}make re error!"
-        echo "if header not found change include statement in scripts/project/yourmain.c${nc}"
+        echo -e "${red}make re error!"
+        echo -e "if header not found change include statement in scripts/project/yourmain.c${nc}"
         rm -f yourmain.c refmain.c
         exit 1
     fi
 else
-    echo "${red}Project not found! Use ./run [projName] [projPath]${nc}"
+    echo -e "${red}Project not found! Use ./run [projName] [projPath]${nc}"
 fi
 
 # compile and eval main
@@ -46,13 +46,13 @@ if gcc -g -fsanitize=address -Wall -Wextra -Werror yourmain.c libftprintf.a -o y
         gcc -g -fsanitize=address -Wall -Wextra -Werror refmain.c -o refProg
         rm -f yourmain.c refmain.c
     else
-        echo "${red}runtime error!${nc}"
+        echo -e "${red}runtime error!${nc}"
         rm -f yourmain.c refmain.c
         exit 1
     fi
 else
-    echo "${red}compile error!"
-    echo "if header not found change include statement in scripts/project/yourmain.c${nc}"
+    echo -e "${red}compile error!"
+    echo -e "if header not found change include statement in scripts/project/yourmain.c${nc}"
     rm -f yourmain.c refmain.c
     exit 1
 fi
@@ -64,8 +64,8 @@ fi
 DIFF=$(diff logs/yourLog logs/refLog)
 
 if [ "$DIFF" = "" ] ; then
-    echo "${green}pass!${nc} && echo"
+    echo -e "${green}pass!${nc}" && echo
 else
-    echo "${red}Outputs don't match! Check log files in project directory${nc} && echo"
+    echo -e "${red}Outputs don't match! Check log files in project directory${nc}" && echo
 fi
 rm -f refProg yourProg
