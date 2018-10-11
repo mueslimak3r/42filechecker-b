@@ -1,8 +1,8 @@
 #!/bin/bash
 RED='\033[0;31m'
 NC='\033[0m'
-BGreen='\033[1;32m'
-echo -e "${BGreen}checking for updates${NC}"
+Bgreen='\033[1;32m'
+echo && echo -e "${Bgreen}checking for updates${NC}"
 
 filename="run.sh"
 m1=$(md5sum "$filename")
@@ -10,12 +10,12 @@ git fetch origin master
 git reset --hard origin/master
 m2=$(md5sum "$filename")
 if [ "$m1" != "$m2" ] ; then
-    echo "updated. relaunching"
+    echo "${RED}updated. relaunching${NC}"
     ./run.sh "$1" "$2"
     exit 0
 fi
 
-echo "finished update check" && echo
+echo "${Bgreen}finished update check${NC}" && echo
 
 case $1 in
     "b_libft" ) sh scripts/b_libft/b_libft.sh "$2";;
@@ -27,5 +27,5 @@ case $1 in
             cd "$2" && rm -rf logs
             make fclean
         fi;;
-    * ) echo "Invalid. Use ./run [projName] [projPath]";;
+    * ) echo "${RED}Invalid. Use ./run [projName] [projPath]${NC}";;
 esac
