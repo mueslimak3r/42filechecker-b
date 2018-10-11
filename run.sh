@@ -5,10 +5,10 @@ green='\033[4;32m'
 echo && echo -e "${green}checking for updates${NC}"
 
 filename="run.sh"
-m1=$(md5sum "$filename")
+m1=$(md5 "$filename")
 git fetch origin master
 git reset --hard origin/master
-m2=$(md5sum "$filename")
+m2=$(md5 "$filename")
 if [ "$m1" != "$m2" ] ; then
     echo -e "${red}updated. relaunching${NC}"
     ./run.sh "$1" "$2"

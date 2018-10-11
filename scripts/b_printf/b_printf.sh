@@ -5,16 +5,18 @@
 red='\033[1;31m'
 nc='\033[0m'
 green='\033[4;32m'
-yourtest="scripts/b_printf/yourmain.c"
+yourtest="scripts/b_printf/yourmain1.c"
 reftest="scripts/b_printf/refmain.c"
 dirName="$1"
 if [ -e "$dirName" ] ; then
     sh scripts/norme.sh "$1"
-    echo && echo && echo "${red}Make sure your header file is includes/b_printf.h!!${nc}"
     echo
-    cp -- "$yourtest" "$dirName"
+    cp "$yourtest" "$dirName"
     cp -- "$reftest" "$dirName"
+    sh scripts/b_printf/getheader.sh "$1"
     cd -- "$dirName"
+    cat yourmain1.c >> yourmain.c
+    rm -f yourmain1.c
     if [ -e "author" ] ; then
         echo "${green}Found author file${nc}"
     else
@@ -44,8 +46,8 @@ mkdir logs
 
 if gcc -g -fsanitize=address -Wall -Wextra -Werror yourmain.c libftprintf.a -o yourProg ; then
     if ./yourProg | cat -e > logs/yourLog; then
-        gcc -g -fsanitize=address -Wall -Wextra -Werror refmain.c -o refProg
-        rm -f yourmain.c refmain.c
+        gcc -g -fsanitize=address -Wall -Wextra -Werror -I . refmain.c -o refProg
+        rm -f refmain.c
     else
         echo "${red}Runtime error!${nc}"
         rm -f yourmain.c refmain.c
@@ -67,6 +69,6 @@ DIFF=$(diff logs/yourLog logs/refLog)
 if [ "$DIFF" = "" ] ; then
     echo "${green}Passed!${nc}" && echo
 else
-    echo "${red}Outputs don't match! Check log files in project directory${nc}" && echo
+    echo "Outputs dont match. Check log files inside project directory"
 fi
 rm -f refProg yourProg
