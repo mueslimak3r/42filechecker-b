@@ -1,6 +1,5 @@
 #!/bin/bash
 
-git clean -dfx
 git pull
 
 case $1 in
