@@ -1,5 +1,5 @@
 #!/bin/bash
-RED='\033[0;31m'
+RED='\033[4;31m' 
 NC='\033[0m'
 Bgreen='\033[4;32m'
 echo && echo -e "${Bgreen}checking for updates${NC}"

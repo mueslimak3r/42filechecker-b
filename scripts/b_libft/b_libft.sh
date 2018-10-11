@@ -2,6 +2,9 @@
 
 # open directory and check makefile
 
+red='\033[4;31m' 
+nc='\033[0m'
+green='\033[4;32m'
 yourtest="scripts/b_libft/yourmain.c"
 reftest="scripts/b_libft/refmain.c"
 dirName="$1"
@@ -11,24 +14,24 @@ if [ -e "$dirName" ] ; then
     cp -- "$reftest" "$dirName"
     cd -- "$dirName"
     if [ -e "author" ] ; then
-        echo "found author file"
+        echo -e "${green}found author file${NC}"
     else
-        echo "missing author file!"
+        echo "${red}missing author file!${NC}"
     fi
     if make re >/dev/null ; then
         if make fclean >/dev/null ; then
-            echo "passed makefile test"
+            echo "${green}passed makefile test${nc}"
             make re >/dev/null && make clean >/dev/null
         else
-            echo "make fclean error!"
+            echo "${red}make fclean error!${nc}"
         fi
     else
-        echo "make re error!"
+        echo "${red}make re error!${nc}"
         rm -rf yourmain.c refmain.c
         exit 1
     fi
 else
-    echo "Project not found! Use ./run [projName] [projPath]"
+    echo "${red}Project not found! Use ./run [projName] [projPath]${nc}"
 fi
 
 # compile and eval main
@@ -38,12 +41,12 @@ if gcc -g -fsanitize=address -Wall -Wextra -Werror yourmain.c libft.a -o yourPro
         gcc -g -fsanitize=address -Wall -Wextra -Werror refmain.c -o refProg
         rm -rf yourmain.c refmain.c yourProg.dSYM
     else
-        echo "runtime error!"
+        echo "${red}runtime error!${nc}"
         rm -rf yourmain.c refmain.c yourProg.dSYM
         exit 1
     fi
 else
-    echo "compile error!"
+    echo "${red}compile error!${nc}"
     rm -rf yourmain.c refmain.c yourProg.dSYM
     exit 1
 fi
@@ -53,8 +56,8 @@ fi
 ./refProg | cat -e > refLog
 DIFF=$(diff yourLog refLog)
 if [ "$DIFF" == "" ] ; then
-    echo "pass!"
+    echo "${green}pass!${nc}"
 else
-    echo "Outputs don't match! Check log files in project directory"
+    echo "${red}Outputs don't match! Check log files in project directory${nc}"
 fi
 rm -rf refProg yourProg yourProg.dSYM
