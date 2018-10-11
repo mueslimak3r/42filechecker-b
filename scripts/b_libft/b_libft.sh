@@ -38,8 +38,10 @@ fi
 
 # compile and eval main
 
+mkdir logs
+
 if gcc -g -fsanitize=address -Wall -Wextra -Werror yourmain.c libft.a -o yourProg ; then
-    if ./yourProg | cat -e > yourLog; then
+    if ./yourProg | cat -e > logs/yourLog; then
         gcc -g -fsanitize=address -Wall -Wextra -Werror refmain.c -o refProg
         rm -rf yourmain.c refmain.c yourProg.dSYM
     else
@@ -55,12 +57,12 @@ fi
 
 # compare your output to the standard functions
 
-./refProg | cat -e > refLog
-DIFF=$(diff yourLog refLog)
+./refProg | cat -e > logs/refLog
+DIFF=$(diff logs/yourLog logs/refLog)
 
 if [ "$DIFF" = "" ] ; then
     echo "${green}Passed!${nc}" && echo
 else
     echo "${red}Outputs don't match! Check log files in project directory${nc}"
 fi
-rm -rf refProg yourProg yourProg.dSYM
+rm -rf refProg yourProg yourProg.dSYM refProg.dSYM
