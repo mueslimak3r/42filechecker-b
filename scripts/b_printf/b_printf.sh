@@ -16,20 +16,20 @@ if [ -e "$dirName" ] ; then
     cp -- "$reftest" "$dirName"
     cd -- "$dirName"
     if [ -e "author" ] ; then
-        echo "${green}found author file${nc}"
+        echo "${green}Found author file${nc}"
     else
-        echo "${red}missing author file!${nc}"
+        echo "${red}Missing author file!${nc}"
     fi
     if make re >/dev/null ; then
         if make fclean >/dev/null ; then
-            echo "${green}passed makefile test${nc}"
+            echo "${green}Passed makefile test${nc}"
             make re >/dev/null && make clean >/dev/null
         else
-            echo "${red}make fclean error!${nc}"
+            echo "${red}Make fclean error!${nc}"
         fi
     else
-        echo "${red}make re error!"
-        echo "if header not found: change include statement in:${nc} scripts/project/yourmain.c"
+        echo "${red}Make re error!"
+        echo "If header not found: change include statement in:${nc} scripts/project/yourmain.c"
         rm -f yourmain.c refmain.c
         exit 1
     fi
@@ -47,13 +47,13 @@ if gcc -g -fsanitize=address -Wall -Wextra -Werror yourmain.c libftprintf.a -o y
         gcc -g -fsanitize=address -Wall -Wextra -Werror refmain.c -o refProg
         rm -f yourmain.c refmain.c
     else
-        echo "${red}runtime error!${nc}"
+        echo "${red}Runtime error!${nc}"
         rm -f yourmain.c refmain.c
         exit 1
     fi
 else
-    echo "${red}compile error!"
-    echo "if header not found change include statement in:${nc} scripts/project/yourmain.c"
+    echo "${red}Compile error!"
+    echo "If header not found change include statement in:${nc} scripts/project/yourmain.c"
     rm -f yourmain.c refmain.c
     exit 1
 fi
@@ -65,7 +65,7 @@ fi
 DIFF=$(diff logs/yourLog logs/refLog)
 
 if [ "$DIFF" = "" ] ; then
-    echo "${green}pass!${nc}" && echo
+    echo "${green}Passed!${nc}" && echo
 else
     echo "${red}Outputs don't match! Check log files in project directory${nc}" && echo
 fi

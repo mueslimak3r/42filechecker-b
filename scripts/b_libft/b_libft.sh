@@ -14,19 +14,19 @@ if [ -e "$dirName" ] ; then
     cp -- "$reftest" "$dirName"
     cd -- "$dirName"
     if [ -e "author" ] ; then
-        echo "${green}found author file${NC}"
+        echo "${green}Found author file${NC}"
     else
-        echo "${red}missing author file!${NC}"
+        echo "${red}Missing author file!${NC}"
     fi
     if make re >/dev/null ; then
         if make fclean >/dev/null ; then
-            echo "${green}passed makefile test${nc}"
+            echo "${green}Passed makefile test${nc}"
             make re >/dev/null && make clean >/dev/null
         else
-            echo "${red}make fclean error!${nc}"
+            echo "${red}Make fclean error!${nc}"
         fi
     else
-        echo "${red}make re error!${nc}"
+        echo "${red}Make re error!${nc}"
         rm -rf yourmain.c refmain.c
         exit 1
     fi
@@ -42,12 +42,12 @@ if gcc -g -fsanitize=address -Wall -Wextra -Werror yourmain.c libft.a -o yourPro
         gcc -g -fsanitize=address -Wall -Wextra -Werror refmain.c -o refProg
         rm -rf yourmain.c refmain.c yourProg.dSYM
     else
-        echo "${red}runtime error!${nc}"
+        echo "${red}Runtime error!${nc}"
         rm -rf yourmain.c refmain.c yourProg.dSYM
         exit 1
     fi
 else
-    echo "${red}compile error!${nc}"
+    echo "${red}Compile error!${nc}"
     rm -rf yourmain.c refmain.c yourProg.dSYM
     exit 1
 fi
@@ -58,7 +58,7 @@ fi
 DIFF=$(diff yourLog refLog)
 
 if [ "$DIFF" = "" ] ; then
-    echo "${green}pass!${nc}" && echo
+    echo "${green}Passed!${nc}" && echo
 else
     echo "${red}Outputs don't match! Check log files in project directory${nc}"
 fi

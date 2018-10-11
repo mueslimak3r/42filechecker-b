@@ -10,19 +10,19 @@ if [ -e "$dirName" ] ; then
     sh scripts/norme.sh "$1" && echo
     cd "$dirName"
     if [ -e "author" ] ; then
-        echo "${green}found author file${nc}"
+        echo "${green}Found author file${nc}"
     else
-        echo "${red}missing author file!${nc}"
+        echo "${red}Missing author file!${nc}"
     fi
     if make re >/dev/null ; then
         if make fclean >/dev/null ; then
-            echo "${green}passed makefile test${nc}"
+            echo "${green}Passed makefile test${nc}"
             make re >/dev/null && make clean >/dev/null
         else
-            echo "${red}make fclean error!${nc}"
+            echo "${red}Make fclean error!${nc}"
         fi
     else
-        echo "${red}make re error!${nc}"
+        echo "${red}Make re error!${nc}"
         exit 1
     fi
 else
@@ -40,7 +40,7 @@ touch logs/refLog
 if ./b_ls | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
     ls | tr '\r\n' ' ' | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
-    echo "${red}runtime error!${nc}"
+    echo "${red}Runtime error!${nc}"
     rm -rf b_ls.dSYM
     exit 1
 fi
@@ -48,7 +48,7 @@ fi
 if ./b_ls -atl | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
     ls -atl -- | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
-    echo "${red}runtime error!${nc}"
+    echo "${red}Runtime error!${nc}"
     rm -rf b_ls.dSYM
     exit 1
 fi
@@ -56,7 +56,7 @@ fi
 if ./b_ls -atlr -- | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
     ls -atlr -- | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
-    echo "${red}runtime error!${nc}"
+    echo "${red}Runtime error!${nc}"
     rm -rf b_ls.dSYM
     exit 1
 fi
@@ -73,7 +73,7 @@ touch ac/afile ac/cfile
 if ./b_ls -tlr -- ac za ab | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
     ls -tlr -- ac za ab | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
-    echo "${red}runtime error!${nc}"
+    echo "${red}Runtime error!${nc}"
     rm -rf b_ls.dSYM
     rm -rf ab ac
     exit 1
