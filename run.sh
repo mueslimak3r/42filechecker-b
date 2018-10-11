@@ -1,6 +1,7 @@
 #!/bin/bash
-
-echo "checking for updates"
+RED='\033[0;31m'
+NC='\033[0m'
+echo -e "${RED}checking for updates"
 
 filename="run.sh"
 m1=$(md5sum "$filename")
