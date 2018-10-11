@@ -13,9 +13,7 @@ if [ "$m1" != "$m2" ] ; then
     exit 0
 fi
 
-echo
-echo "finished update check"
-echo
+echo "finished update check" && echo
 
 case $1 in
     "b_libft" ) sh scripts/b_libft/b_libft.sh "$2";;
