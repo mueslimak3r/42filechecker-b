@@ -35,6 +35,7 @@ if [ -e "$dirName" ] ; then
     fi
 else
     echo "${red}Project not found! Use ./run [projName] [projPath]${nc}"
+    exit 1
 fi
 
 # compile and eval main

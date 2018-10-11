@@ -40,7 +40,7 @@ touch logs/refLog
 if ./b_ls | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
     ls | tr '\r\n' ' ' | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
-    echo "runtime error!"
+    echo "${red}runtime error!${nc}"
     rm -rf b_ls.dSYM
     exit 1
 fi
@@ -48,7 +48,7 @@ fi
 if ./b_ls -atl | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
     ls -atl -- | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
-    echo "runtime error!"
+    echo "${red}runtime error!${nc}"
     rm -rf b_ls.dSYM
     exit 1
 fi
@@ -56,7 +56,7 @@ fi
 if ./b_ls -atlr -- | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
     ls -atlr -- | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
-    echo "runtime error!"
+    echo "${red}runtime error!${nc}"
     rm -rf b_ls.dSYM
     exit 1
 fi
@@ -73,7 +73,7 @@ touch ac/afile ac/cfile
 if ./b_ls -tlr -- ac za ab | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
     ls -tlr -- ac za ab | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
-    echo "runtime error!"
+    echo "${red}runtime error!${nc}"
     rm -rf b_ls.dSYM
     rm -rf ab ac
     exit 1
@@ -85,8 +85,8 @@ rm -rf ab ac za
 
 DIFF=$(diff logs/yourLog logs/refLog)
 if [ "$DIFF" == "" ] ; then
-    echo "pass!"
+    echo "${green}Passed!${nc}"
 else
-    echo "Outputs don't match! Check log files in project directory"
+    echo "${red}Outputs don't match! Check log files in project directory${nc}"
 fi
 rm -rf b_ls.dSYM
