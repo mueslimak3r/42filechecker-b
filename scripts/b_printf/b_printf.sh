@@ -70,4 +70,4 @@ if [ "$DIFF" = "" ] ; then
 else
     echo "Outputs dont match. Check log files inside project directory"
 fi
-rm -f refProg yourProg
+rm -rf refProg yourProg refProg.dSYM yourProg.dSYM
