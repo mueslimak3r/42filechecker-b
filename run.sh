@@ -5,12 +5,23 @@ green='\033[01;32m'
 echo && echo -e "${green}checking for updates${NC}"
 
 filename="run.sh"
-m1=$(md5sum "$filename")
-m1=$(md5 "$filename")
+
+if [[ $(uname -s) == Linux ]]
+then
+    m1=$(md5sum "$filename")
+else
+    m1=$(md5 "$filename")
+fi
+
 git fetch origin master
 git reset --hard origin/master
-m2=$(md5sum "$filename")
-m2=$(md5 "$filename")
+
+if [[ $(uname -s) == Linux ]]
+then
+    m2=$(md5sum "$filename")
+else
+    m2=$(md5 "$filename")
+fi
 if [ "$m1" != "$m2" ] ; then
     echo -e "${red}updated. relaunching${NC}"
     ./run.sh "$1" "$2"
