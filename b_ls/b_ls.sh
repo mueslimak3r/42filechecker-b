@@ -4,9 +4,8 @@
 
 dirName="$1"
 if [ -e "$dirName" ] ; then
-    cd -- "$dirName"
+    cd "$dirName"
     rm -rf logs
-    norminette -R CheckForbiddenSourceHeader
     if [ -e "author" ] ; then
         echo "found author file"
     else
