@@ -28,12 +28,12 @@ int			main(void)
 		i--;
 	}*/
 
-    printf("%d %d %o %x %u %u\n", max, min, 2147483647, 2147483647, UINT_MAX, 2147483647);
-	printf("%d %d %o %x %u\n\n", max, min, 2000, 2000, UINT_MAX);
-	printf("Zeros: %d %i %o %x %u\n", zero, zero, zero, zero, zero);
-	printf("negative one: %d %i %o %x %u\n", -1, -1, -1, -1, -1);
-	printf("%s %c %c\n", str, str[2], str[25]);
-	printf("%d %d %o %x %u\n", max, min, -42, -42, UINT_MAX);
-	printf("%o\n", UINT_MAX);
+	int		i = 0;
+    i += printf("%d %d %o %x %u %u\n", max, min, 2147483647, 2147483647, UINT_MAX, 2147483647);
+	i += printf("Zeros: %d %i %o %x %u\n", zero, zero, zero, zero, zero);
+	i += printf("negative one: %d %i %o %x %u\n", -1, -1, -1, -1, -1);
+	i += printf("%s %c %c\n", str, str[2], str[25]);
+	i += printf("%o %o %x\n", UINT_MAX, UINT_MAX, UINT_MAX);
+	printf("total: %d", i);
 	return (0);
 }

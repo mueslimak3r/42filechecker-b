@@ -10,8 +10,8 @@ int			main(void)
 	int  min = INT_MIN;
 	int  zero = 0;
 	char str[] = "abcdefghijklmnopqrstuwxyz";
-	/*int  i = 0;
-
+	/*
+	int i;
 	while (i < 50)
 	{
 		//b_printf("%d %s\n", i, &str[i % 26]);
@@ -44,12 +44,12 @@ int			main(void)
 	fprintf(fp, ("p_flag: %s$\n"), paddr);
     fclose (fp);
 	b_printf("p_flag: %p\n", &str);
-    b_printf("%d %d %o %x %u %u\n", max, min, 2147483647, 2147483647, UINT_MAX, 2147483647);
-	b_printf("%d %d %o %x %u\n\n", max, min, 2000, 2000, UINT_MAX);
-	b_printf("Zeros: %d %i %o %x %u\n", zero, zero, zero, zero, zero);
-	b_printf("negative one: %d %i %o %x %u\n", -1, -1, -1, -1, -1);
-	b_printf("%s %c %c\n", str, str[2], str[25]);
-	b_printf("%d %d %o %x %u\n", max, min, -42, -42, UINT_MAX);
-	b_printf("%o\n", UINT_MAX);
+	int		i = 0;
+    i += b_printf("%d %d %o %x %u %u\n", max, min, 2147483647, 2147483647, UINT_MAX, 2147483647);
+	i += b_printf("Zeros: %d %i %o %x %u\n", zero, zero, zero, zero, zero);
+	i += b_printf("negative one: %d %i %o %x %u\n", -1, -1, -1, -1, -1);
+	i += b_printf("%s %c %c\n", str, str[2], str[25]);
+	i += b_printf("%o %o %x\n", UINT_MAX, UINT_MAX, UINT_MAX);
+	b_printf("total: %d", i);
 	return (0);
 }
