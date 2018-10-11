@@ -7,7 +7,7 @@ nc='\033[0m'
 green='\033[4;32m'
 dirName="$1"
 if [ -e "$dirName" ] ; then
-    sh scripts/norme.sh "$1"
+    sh scripts/norme.sh "$1" && echo
     cd "$dirName"
     if [ -e "author" ] ; then
         echo "${green}found author file${nc}"
@@ -85,7 +85,7 @@ rm -rf ab ac za
 
 DIFF=$(diff logs/yourLog logs/refLog)
 if [ "$DIFF" == "" ] ; then
-    echo "${green}Passed!${nc}"
+    echo "${green}Passed!${nc}" && echo
 else
     echo "${red}Outputs don't match! Check log files in project directory${nc}"
 fi
