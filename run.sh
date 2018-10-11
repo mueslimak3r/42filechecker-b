@@ -1,7 +1,7 @@
 #!/bin/bash
 red='\033[1;31m' 
 NC='\033[0m'
-green='\033[4;32m'
+green='\033[01;32m'
 echo && echo -e "${green}checking for updates${NC}"
 
 filename="run.sh"
