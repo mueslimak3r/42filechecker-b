@@ -8,5 +8,5 @@ if [[ $(command -v norminette | grep -e '') == "0" ]]
 then
     echo "${red}No norminette :'(${nc}"
 else
-    norminette -R CheckForbiddenSourceHeader
+    norminette
 fi
