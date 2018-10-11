@@ -6,10 +6,10 @@ yourtest="b_libft/yourmain.c"
 reftest="b_libft/refmain.c"
 dirName="$1"
 if [ -e "$dirName" ] ; then
-    norminette -R CheckForbiddenSourceHeader
     cp -- "$yourtest" "$dirName"
     cp -- "$reftest" "$dirName"
     cd -- "$dirName"
+    norminette -R CheckForbiddenSourceHeader
     rm -f refLog yourLog
     if [ -e "author" ] ; then
         echo "found author file"
