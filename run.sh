@@ -10,12 +10,12 @@ git fetch origin master
 git reset --hard origin/master
 m2=$(md5sum "$filename")
 if [ "$m1" != "$m2" ] ; then
-    echo "${RED}updated. relaunching${NC}"
+    echo -e "${RED}updated. relaunching${NC}"
     ./run.sh "$1" "$2"
     exit 0
 fi
 
-echo "${Bgreen}finished update check${NC}" && echo
+echo -e "${Bgreen}finished update check${NC}" && echo
 
 case $1 in
     "b_libft" ) sh scripts/b_libft/b_libft.sh "$2";;
@@ -27,5 +27,5 @@ case $1 in
             cd "$2" && rm -rf logs
             make fclean
         fi;;
-    * ) echo "${RED}Invalid. Use ./run [projName] [projPath]${NC}";;
+    * ) echo -e "${RED}Invalid. Use ./run [projName] [projPath]${NC}";;
 esac
