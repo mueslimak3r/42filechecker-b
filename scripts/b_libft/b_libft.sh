@@ -9,7 +9,8 @@ yourtest="scripts/b_libft/yourmain.c"
 reftest="scripts/b_libft/refmain.c"
 dirName="$1"
 if [ -e "$dirName" ] ; then
-    sh scripts/norme.sh "$1" && echo
+    sh scripts/norme.sh "$1"
+    echo
     cp -- "$yourtest" "$dirName"
     cp -- "$reftest" "$dirName"
     cd -- "$dirName"
