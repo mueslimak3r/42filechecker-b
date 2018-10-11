@@ -31,7 +31,6 @@ if [ -e "$dirName" ] ; then
         fi
     else
         echo "${red}Make re error!"
-        echo "If header not found: change include statement in:${nc} scripts/project/yourmain.c"
         rm -f yourmain.c refmain.c
         exit 1
     fi
@@ -47,7 +46,7 @@ mkdir logs
 if gcc -g -fsanitize=address -Wall -Wextra -Werror yourmain.c libftprintf.a -o yourProg ; then
     if ./yourProg | cat -e > logs/yourLog; then
         gcc -g -fsanitize=address -Wall -Wextra -Werror -I . refmain.c -o refProg
-        rm -f refmain.c
+        rm -f yourmain.c refmain.c
     else
         echo "${red}Runtime error!${nc}"
         rm -f yourmain.c refmain.c
