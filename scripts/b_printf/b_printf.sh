@@ -2,7 +2,7 @@
 
 # open directory and check makefile
 
-red='\033[4;31m' 
+red='\033[1;31m'
 nc='\033[0m'
 green='\033[4;32m'
 yourtest="scripts/b_printf/yourmain.c"
