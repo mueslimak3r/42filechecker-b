@@ -2,8 +2,8 @@
 
 # open directory and check makefile
 
-yourtest="b_libft/yourmain.c"
-reftest="b_libft/refmain.c"
+yourtest="scripts/b_libft/yourmain.c"
+reftest="scripts/b_libft/refmain.c"
 dirName="$1"
 if [ -e "$dirName" ] ; then
     sh scripts/norme.sh "$1"

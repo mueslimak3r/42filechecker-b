@@ -2,8 +2,8 @@
 
 # open directory and check makefile
 
-yourtest="b_printf/yourmain.c"
-reftest="b_printf/refmain.c"
+yourtest="scripts/b_printf/yourmain.c"
+reftest="scripts/b_printf/refmain.c"
 dirName="$1"
 echo "Make sure your header file is includes/b_printf.h!!!"
 if [ -e "$dirName" ] ; then
@@ -25,6 +25,7 @@ if [ -e "$dirName" ] ; then
         fi
     else
         echo "make re error!"
+        echo "if header not found change include statement in scripts/project/yourmain.c"
         rm -f yourmain.c refmain.c
         exit 1
     fi
