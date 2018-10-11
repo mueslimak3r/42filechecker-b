@@ -2,28 +2,32 @@
 
 # open directory and check makefile
 
+red='\033[4;31m' 
+nc='\033[0m'
+green='\033[4;32m'
 dirName="$1"
 if [ -e "$dirName" ] ; then
     sh scripts/norme.sh "$1"
     cd "$dirName"
     if [ -e "author" ] ; then
-        echo "found author file"
+        echo "${green}found author file${nc}"
     else
-        echo "missing author file!"
+        echo "${red}missing author file!${nc}"
     fi
     if make re >/dev/null ; then
         if make fclean >/dev/null ; then
-            echo "passed makefile test"
+            echo "${green}passed makefile test${nc}"
             make re >/dev/null && make clean >/dev/null
         else
-            echo "make fclean error!"
+            echo "${red}make fclean error!${nc}"
         fi
     else
-        echo "make re error!"
+        echo "${red}make re error!${nc}"
         exit 1
     fi
 else
-    echo "Project not found! Use ./run [projName] [projPath]"
+    echo "${red}Project not found! Use ./run [projName] [projPath]${nc}"
+    exit 1
 fi
 
 
