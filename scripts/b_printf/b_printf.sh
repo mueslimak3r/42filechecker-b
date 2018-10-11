@@ -7,8 +7,8 @@ reftest="scripts/b_printf/refmain.c"
 dirName="$1"
 if [ -e "$dirName" ] ; then
     sh scripts/norme.sh "$1"
-    echo && echo "Make sure your header file is includes/b_printf.h!!!"
-    echo && echo
+    echo && echo && echo "Make sure your header file is includes/b_printf.h!!!"
+    echo
     cp -- "$yourtest" "$dirName"
     cp -- "$reftest" "$dirName"
     cd -- "$dirName"
