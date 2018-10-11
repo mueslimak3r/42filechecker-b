@@ -9,3 +9,4 @@ then
     echo "${red}No norminette :'(${nc}"
 else
     norminette -R CheckForbiddenSourceHeader
+fi
