@@ -64,8 +64,8 @@ fi
 DIFF=$(diff logs/yourLog logs/refLog)
 
 if [ "$DIFF" = "" ] ; then
-    echo "${green}pass!${nc}"
+    echo "${green}pass!${nc} && echo"
 else
-    echo "${red}Outputs don't match! Check log files in project directory${nc}"
+    echo "${red}Outputs don't match! Check log files in project directory${nc} && echo"
 fi
 rm -f refProg yourProg
