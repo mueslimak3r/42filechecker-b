@@ -57,21 +57,21 @@ else
     exit 1
 fi
 
-mkdir ab
-touch ab/afile ab/cfile
-mkdir ac
-touch ac/afile ac/cfile
+#mkdir ab
+#touch ab/afile ab/cfile
+#mkdir ac
+#touch ac/afile ac/cfile
 
-if ./b_ls -tlr -- ./ ac ab | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
-    ls -tlr -- ./ ac ab | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
-else
-    echo "runtime error!"
-    rm -rf b_ls.dSYM
-    rm -rf ab ac
-    exit 1
-fi
+#if ./b_ls -tlr -- ./ ac ab | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
+#    ls -tlr -- ./ ac ab | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
+#else
+#    echo "runtime error!"
+#    rm -rf b_ls.dSYM
+#    rm -rf ab ac
+#    exit 1
+#fi
 
-rm -rf ab ac
+#rm -rf ab ac
 
 # compare your output to the standard functions
 
