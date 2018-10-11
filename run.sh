@@ -13,7 +13,7 @@ else
     m1=$(md5 "$filename")
 fi
 
-git fetch origin master
+git fetch origin/master
 git reset --hard origin/master
 
 if [[ $(uname -s) == Linux ]]
