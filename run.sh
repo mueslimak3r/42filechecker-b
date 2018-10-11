@@ -5,6 +5,7 @@ git fetch origin master
 git reset --hard origin/master
 m2=$(md5sum "$filename")
 if [ "$m1" != "$m2" ] ; then
+    echo "updated. relaunching"
     ./run.sh "$1" "$2"
     exit 0
 fi
