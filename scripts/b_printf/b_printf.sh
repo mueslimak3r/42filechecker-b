@@ -34,7 +34,7 @@ if [ -e "$dirName" ] ; then
         exit 1
     fi
 else
-    echo "${red}Project not found! Use ./run [projName] [projPath]${nc}"
+    echo "${red}Project not found! Use ${nc}./run [projName] [projPath]"
     exit 1
 fi
 
@@ -53,7 +53,7 @@ if gcc -g -fsanitize=address -Wall -Wextra -Werror yourmain.c libftprintf.a -o y
     fi
 else
     echo "${red}compile error!"
-    echo "if header not found change include statement in scripts/project/yourmain.c${nc}"
+    echo "if header not found change include statement in:${nc} scripts/project/yourmain.c"
     rm -f yourmain.c refmain.c
     exit 1
 fi

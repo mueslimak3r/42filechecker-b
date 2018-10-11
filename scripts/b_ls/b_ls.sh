@@ -26,7 +26,7 @@ if [ -e "$dirName" ] ; then
         exit 1
     fi
 else
-    echo "${red}Project not found! Use ./run [projName] [projPath]${nc}"
+    echo "${red}Project not found! Use ${nc}./run [projName] [projPath]"
     exit 1
 fi
 
