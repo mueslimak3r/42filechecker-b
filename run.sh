@@ -1,7 +1,8 @@
 #!/bin/bash
 RED='\033[0;31m'
 NC='\033[0m'
-echo -e "${RED}checking for updates"
+BGreen='\033[1;32m'
+echo -e "${BGreen}checking for updates${NC}"
 
 filename="run.sh"
 m1=$(md5sum "$filename")
