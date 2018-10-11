@@ -5,8 +5,8 @@
 dirName="$1"
 if [ -e "$dirName" ] ; then
     cd -- "$dirName"
-    rm -f refLog yourLog
-    norminette -R CheckForbiddenSourceHeader
+    rm -rf logs
+    # norminette -R CheckForbiddenSourceHeader
     if [ -e "author" ] ; then
         echo "found author file"
     else
@@ -27,29 +27,31 @@ else
     echo "Project not found! Use ./run [projName] [projPath]"
 fi
 
-touch yourLog
-touch refLog
+
+mkdir logs
+touch logs/yourLog
+touch logs/refLog
 
 # tests
 
-if ./b_ls -- ~/ | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> yourLog; then
-    ls -- ~/ | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> refLog
+if ./b_ls | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
+    ls | tr '\r\n' ' ' | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
     echo "runtime error!"
     rm -f b_ls.dSYM
     exit 1
 fi
 
-if ./b_ls -atl ~/ | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> yourLog; then
-    ls -atl -- ~/ | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> refLog
+if ./b_ls -atl | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
+    ls -atl -- | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
     echo "runtime error!"
     rm -f b_ls.dSYM
     exit 1
 fi
 
-if ./b_ls -atlr -- ~/ | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> yourLog; then
-    ls -atlr -- ~/ | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> refLog
+if ./b_ls -atlr -- | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
+    ls -atlr -- | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
     echo "runtime error!"
     rm -f b_ls.dSYM
@@ -58,7 +60,7 @@ fi
 
 # compare your output to the standard functions
 
-DIFF=$(diff yourLog refLog)
+DIFF=$(diff logs/yourLog logs/refLog)
 if [ "$DIFF" == "" ] ; then
     echo "pass!"
 else
