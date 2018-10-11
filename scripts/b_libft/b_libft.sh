@@ -4,7 +4,7 @@
 
 red='\033[1;31m' 
 nc='\033[0m'
-green='\033[4;32m'
+green='\033[01;32m'
 yourtest="scripts/b_libft/yourmain.c"
 reftest="scripts/b_libft/refmain.c"
 dirName="$1"

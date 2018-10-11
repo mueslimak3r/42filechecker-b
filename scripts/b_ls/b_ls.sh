@@ -4,7 +4,7 @@
 
 red='\033[1;31m'
 nc='\033[0m'
-green='\033[4;32m'
+green='\033[01;32m'
 dirName="$1"
 if [ -e "$dirName" ] ; then
     sh scripts/norme.sh "$1"
