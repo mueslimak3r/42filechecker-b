@@ -46,6 +46,7 @@ if gcc -g -fsanitize=address -Wall -Wextra -Werror yourmain.c libftprintf.a -o y
     fi
 else
     echo "compile error!"
+    echo "if header not found change include statement in scripts/project/yourmain.c"
     rm -f yourmain.c refmain.c
     exit 1
 fi
