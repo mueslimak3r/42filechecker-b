@@ -35,8 +35,10 @@ fi
 
 # compile and eval main
 
+mkdir logs
+
 if gcc -g -fsanitize=address -Wall -Wextra -Werror yourmain.c libftprintf.a -o yourProg ; then
-    if ./yourProg | cat -e > yourLog; then
+    if ./yourProg | cat -e > logs/yourLog; then
         gcc -g -fsanitize=address -Wall -Wextra -Werror refmain.c -o refProg
         rm -f yourmain.c refmain.c
     else
@@ -53,10 +55,12 @@ fi
 
 # compare your output to the standard functions
 
-./refProg | cat -e > refLog
-DIFF=$(diff yourLog refLog)
-if [ "$DIFF" == "" ] ; then
-    echo "pass! Please manually check %p flag."
+./refProg | cat -e >> logs/refLog
+
+DIFF=$(diff logs/yourLog logs/refLog)
+
+if [ "$DIFF" = "" ] ; then
+    echo "pass!"
 else
     echo "Outputs don't match! Check log files in project directory"
 fi
