@@ -4,9 +4,8 @@
 
 dirName="$1"
 if [ -e "$dirName" ] ; then
+    sh norme.sh "$1"
     cd "$dirName"
-    rm -rf logs
-    norminette -R CheckForbiddenSourceHeader
     if [ -e "author" ] ; then
         echo "found author file"
     else
@@ -38,7 +37,7 @@ if ./b_ls | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
     ls | tr '\r\n' ' ' | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
     echo "runtime error!"
-    rm -f b_ls.dSYM
+    rm -rf b_ls.dSYM
     exit 1
 fi
 
@@ -46,7 +45,7 @@ if ./b_ls -atl | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourL
     ls -atl -- | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
     echo "runtime error!"
-    rm -f b_ls.dSYM
+    rm -rf b_ls.dSYM
     exit 1
 fi
 
@@ -54,7 +53,7 @@ if ./b_ls -atlr -- | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/y
     ls -atlr -- | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
     echo "runtime error!"
-    rm -f b_ls.dSYM
+    rm -rf b_ls.dSYM
     exit 1
 fi
 
@@ -67,7 +66,7 @@ if ./b_ls -tlr -- ./ ac ab | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yo
     ls -tlr -- ./ ac ab | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
     echo "runtime error!"
-    rm -f b_ls.dSYM
+    rm -rf b_ls.dSYM
     rm -rf ab ac
     exit 1
 fi
@@ -82,4 +81,4 @@ if [ "$DIFF" == "" ] ; then
 else
     echo "Outputs don't match! Check log files in project directory"
 fi
-rm -f b_ls.dSYM
+rm -rf b_ls.dSYM

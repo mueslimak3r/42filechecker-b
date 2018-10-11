@@ -6,11 +6,10 @@ yourtest="b_libft/yourmain.c"
 reftest="b_libft/refmain.c"
 dirName="$1"
 if [ -e "$dirName" ] ; then
+    sh norme.sh "$1"
     cp -- "$yourtest" "$dirName"
     cp -- "$reftest" "$dirName"
     cd -- "$dirName"
-    norminette -R CheckForbiddenSourceHeader
-    rm -f refLog yourLog
     if [ -e "author" ] ; then
         echo "found author file"
     else
@@ -25,7 +24,7 @@ if [ -e "$dirName" ] ; then
         fi
     else
         echo "make re error!"
-        rm -f yourmain.c refmain.c
+        rm -rf yourmain.c refmain.c
         exit 1
     fi
 else
@@ -37,15 +36,15 @@ fi
 if gcc -g -fsanitize=address -Wall -Wextra -Werror yourmain.c libft.a -o yourProg ; then
     if ./yourProg | cat -e > yourLog; then
         gcc -g -fsanitize=address -Wall -Wextra -Werror refmain.c -o refProg
-        rm -f yourmain.c refmain.c yourProg.dSYM
+        rm -rf yourmain.c refmain.c yourProg.dSYM
     else
         echo "runtime error!"
-        rm -f yourmain.c refmain.c yourProg.dSYM
+        rm -rf yourmain.c refmain.c yourProg.dSYM
         exit 1
     fi
 else
     echo "compile error!"
-    rm -f yourmain.c refmain.c yourProg.dSYM
+    rm -rf yourmain.c refmain.c yourProg.dSYM
     exit 1
 fi
 
@@ -58,4 +57,4 @@ if [ "$DIFF" == "" ] ; then
 else
     echo "Outputs don't match! Check log files in project directory"
 fi
-rm -f refProg yourProg yourProg.dSYM
+rm -rf refProg yourProg yourProg.dSYM
