@@ -7,7 +7,8 @@ nc='\033[0m'
 green='\033[4;32m'
 dirName="$1"
 if [ -e "$dirName" ] ; then
-    sh scripts/norme.sh "$1" && echo
+    sh scripts/norme.sh "$1"
+    echo
     cd "$dirName"
     if [ -e "author" ] ; then
         echo "${green}Found author file${nc}"
