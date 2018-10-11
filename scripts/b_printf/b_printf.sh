@@ -29,7 +29,7 @@ if [ -e "$dirName" ] ; then
         fi
     else
         echo "${red}make re error!"
-        echo "if header not found change include statement in scripts/project/yourmain.c${nc}"
+        echo "if header not found: change include statement in:${nc} scripts/project/yourmain.c"
         rm -f yourmain.c refmain.c
         exit 1
     fi
