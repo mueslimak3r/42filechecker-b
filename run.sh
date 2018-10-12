@@ -28,9 +28,11 @@ if [ "$3" != "" ] ; then
         echo -e "${red}updated. relaunching${NC}"
         ./run.sh "$1" "$2"
         exit 0
+    echo -e "${green}finished update check${NC}" && echo
 fi
-
-echo -e "${green}finished update check${NC}" && echo
+    echo -e "${green}offline mode${NC}" && echo
+else
+    echo -e "${green}finished update check${NC}" && echo
 fi
 
 case $1 in
