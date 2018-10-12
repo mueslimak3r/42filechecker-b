@@ -11,8 +11,8 @@ I recommend cloning the filechecker to somewhere near where your projects are st
 To test your projects navigate to the root of b_filechecker's directory and run:
 
 ./run.sh [the test you want to run] [the path of your projects directory]
-Your options:
 
+			[first param]				[second param]
 			b_libft						../b_libft
 			b_printf					/tmp/b_printf
 			b_ls						etc...
