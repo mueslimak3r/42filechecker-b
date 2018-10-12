@@ -3,7 +3,7 @@ red='\033[1;31m'
 NC='\033[0m'
 green='\033[01;32m'
 
-if [ "$3" != "offline" ] ; then
+if [ "$3" != "" ] ; then
 
     echo && echo -e "${green}checking for updates${NC}"
 
