@@ -28,7 +28,7 @@ if [ -e "$dirName" ] ; then
     fi
     if make re >/dev/null ; then
         if make fclean >/dev/null ; then
-            echo -e "${green}Passed makefile test${nc}"
+            echo -e "${green}Passed makefile test!${nc}"
             make re >/dev/null && make clean >/dev/null
         else
             echo -e "${red}Make fclean error!${nc}"
@@ -57,8 +57,7 @@ if gcc -g -fsanitize=address -Wall -Wextra -Werror yourmain.c libftprintf.a -o y
         exit 1
     fi
 else
-    echo -e "${red}Compile error!"
-    echo -e "If header not found change include statement in:${nc} scripts/project/yourmain.c"
+    echo -e "${red}Compile error!${nc}"
     rm -f yourmain.c refmain.c
     exit 1
 fi

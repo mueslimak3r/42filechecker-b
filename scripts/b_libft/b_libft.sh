@@ -25,7 +25,7 @@ if [ -e "$dirName" ] ; then
     fi
     if make re >/dev/null ; then
         if make fclean >/dev/null ; then
-            echo -e "${green}Passed makefile test${nc}"
+            echo -e "${green}Passed makefile test!${nc}"
             make re >/dev/null && make clean >/dev/null
         else
             echo -e "${red}Make fclean error!${nc}"

@@ -51,7 +51,7 @@ case $1 in
                     diff "logs/yourLog" "logs/refLog" | cat
                     echo
                 else
-                    echo -e "${red}Something went wrong.${NC}"
+                    echo -e "${red}Something went wrong!${NC}"
                     exit 1
                 fi
             else
@@ -63,5 +63,5 @@ case $1 in
             cd "$2" && rm -rf logs
             make fclean
             fi;;
-    * ) echo -e "${red}Invalid. Use ./run [projName] [projPath]${NC}";;
+    * ) echo -e "${red}Usage: ./run [projName] [projPath]${NC}";;
 esac
