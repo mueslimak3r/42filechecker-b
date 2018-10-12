@@ -24,9 +24,7 @@ Debugging options:
 					-runs w/o syncing with github	offline
 
 
-### What the tests do
-
-I evaluate:
+### What I evalue:
 
 The existence and proper formatting of your "author" file.
 
