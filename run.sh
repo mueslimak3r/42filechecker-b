@@ -7,7 +7,7 @@ if [ "$3" == "offline" ] ; then
     echo -e "${green}offline mode${NC}" && echo
 else
     echo && echo -e "use ${green}\"./run * * offline\"${NC} to run offline"
-    echo -e "${green}checking for updates${NC}" && echo
+    echo && echo -e "${green}checking for updates${NC}"
 
     filename="run.sh"
     if [[ $(uname -s) == Linux ]]
