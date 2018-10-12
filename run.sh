@@ -3,7 +3,7 @@ red='\033[1;31m'
 NC='\033[0m'
 green='\033[01;32m'
 
-if [ "$3" == "offline" ] ; then
+if [ "$3" == "offline" ] | ; then
     echo -e "${green}offline mode${NC}" && echo
 else
     echo && echo -e "${green}use${NC} \"./run.sh "$1" "$2" offline\"${green} to suppress updates${NC}"

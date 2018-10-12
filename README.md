@@ -12,15 +12,16 @@ To test your projects navigate to the root of b_filechecker's directory and run:
 
 ./run.sh [the test you want to run] [the path of your projects directory]
 
-			[first param]					[second param]
+			[first param]			[second param]		 	[third param]
 			b_libft						../b_libft
 			b_printf					/tmp/b_printf
 			b_ls						etc...
 
 Debugging options:
-			
-			cleanup		-removes log files-		../b_libft
-			getnew		-forces an update-
+			[first param]									[third param]
+			cleanup		-deletes logs-	../b_libft
+						-runs without syncing with github		offline
+
 
 ### What the tests do
 
