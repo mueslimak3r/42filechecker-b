@@ -2,10 +2,12 @@
 red='\033[1;31m' 
 NC='\033[0m'
 green='\033[01;32m'
+
+if ("$3" != "offline") ; then
+
 echo && echo -e "${green}checking for updates${NC}"
 
 filename="run.sh"
-
 if [[ $(uname -s) == Linux ]]
 then
     m1=$(md5sum "$filename")
@@ -29,6 +31,7 @@ if [ "$m1" != "$m2" ] ; then
 fi
 
 echo -e "${green}finished update check${NC}" && echo
+fi
 
 case $1 in
     "b_libft" ) sh scripts/b_libft/b_libft.sh "$2";;
