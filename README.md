@@ -32,7 +32,7 @@ The existence and proper formatting of your "author" file.
 
 The basic functionality of your Makefile.
 
-The functionality of your program compared to the functionality of the programs/functions they are imitating.
+The functionality of your programs/functions compared to the functionality of the programs/functions they are imitating.
 
 ## Author
 
