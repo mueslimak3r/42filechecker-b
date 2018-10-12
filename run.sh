@@ -6,7 +6,7 @@ green='\033[01;32m'
 if [ "$3" == "offline" ] ; then
     echo -e "${green}offline mode${NC}" && echo
 else
-    echo && echo -e "${green}use${NC} \"./run "$1" "$2" offline\"${green} to suppress updates${NC}"
+    echo && echo -e "${green}use${NC} \"./run.sh "$1" "$2" offline\"${green} to suppress updates${NC}"
     echo && echo -e "${green}checking for updates${NC}"
 
     filename="run.sh"
