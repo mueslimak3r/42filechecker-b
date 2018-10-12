@@ -48,6 +48,7 @@ case $1 in
                     echo
                 elif [ $error -eq 1 ] ; then
                     diff "logs/yourLog" "logs/refLog" | cat
+                    echo
                 else
                     echo -e "${red}Something went wrong.${NC}"
                     exit 1
