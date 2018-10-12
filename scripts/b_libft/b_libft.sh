@@ -14,10 +14,14 @@ if [ -e "$dirName" ] ; then
     cp -- "$yourtest" "$dirName"
     cp -- "$reftest" "$dirName"
     cd -- "$dirName"
-    if [ -e "author" ] & [ $(cat -e author | sed -n '$s/.*\(.\)$/\1/p') ==  "$" ] ; then
-        echo "${green}Author file passes!${nc}"
+    if [ -e "author" ] ; then
+        if [ $(cat -e author | sed -n '$s/.*\(.\)$/\1/p') ==  "$" ] ; then
+            echo "${green}Author file passes!${nc}"
+        else
+            echo "${red}Author file found but is invalid!${nc}"
+        fi
     else
-        echo "${red}Author file is missing or invalid!${nc}"
+        echo "${red}Author file is missing!${nc}"
     fi
     if make re >/dev/null ; then
         if make fclean >/dev/null ; then

@@ -17,10 +17,14 @@ if [ -e "$dirName" ] ; then
     cd -- "$dirName"
     cat yourmain1.c >> yourmain.c
     rm -f yourmain1.c
-    if [ -e "author" ] & [ $(cat -e author | sed -n '$s/.*\(.\)$/\1/p') ==  "$" ] ; then
-        echo "${green}Author file passes!${nc}"
+    if [ -e "author" ] ; then
+        if [ $(cat -e author | sed -n '$s/.*\(.\)$/\1/p') ==  "$" ] ; then
+            echo "${green}Author file passes!${nc}"
+        else
+            echo "${red}Author file found but is invalid!${nc}"
+        fi
     else
-        echo "${red}Author file is missing or invalid!${nc}"
+        echo "${red}Author file is missing!${nc}"
     fi
     if make re >/dev/null ; then
         if make fclean >/dev/null ; then
