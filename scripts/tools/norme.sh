@@ -5,8 +5,7 @@ green='\033[01;32m'
 yellow='\033[0;33m'
 cd $1
 rm -rf refLog yourLog logs refProg.dSYM yourProg.dSYM
-if [[ $(command -v norminette | grep -e "") == "" ]]
-then
+if [[ $(command -v norminette | grep -e "") == "" ]] ; then
     echo "${red}No norminette :'(${nc}"
 else
     norminette > norm_save

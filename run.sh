@@ -18,8 +18,7 @@ if [ "$3" != "" ] ; then
     git clean -f
     git reset --hard origin/master
 
-    if [[ $(uname -s) == Linux ]]
-    then
+    if [[ $(uname -s) == Linux ]] ; then
         m2=$(md5sum "$filename")
     else
         m2=$(md5 "$filename")
@@ -28,11 +27,10 @@ if [ "$3" != "" ] ; then
         echo -e "${red}updated. relaunching${NC}"
         ./run.sh "$1" "$2"
         exit 0
-    echo -e "${green}finished update check${NC}" && echo
-fi
-    echo -e "${green}offline mode${NC}" && echo
+        echo -e "${green}finished update check${NC}" && echo
+    fi
 else
-    echo -e "${green}finished update check${NC}" && echo
+    echo -e "${green}offline mode${NC}" && echo
 fi
 
 case $1 in
