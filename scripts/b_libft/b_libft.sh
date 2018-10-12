@@ -17,7 +17,7 @@ if [ -e "$dirName" ] ; then
     if [ -e "author" ] & [ $(cat -e author | sed -n '$s/.*\(.\)$/\1/p') ==  "$" ] ; then
         echo "${green}Author file passes!${nc}"
     else
-        echo "${red}Author file missing or invalid!${nc}"
+        echo "${red}Author file is missing or invalid!${nc}"
     fi
     if make re >/dev/null ; then
         if make fclean >/dev/null ; then
