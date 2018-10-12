@@ -10,10 +10,10 @@ if [ -e "$dirName" ] ; then
     sh scripts/norme.sh "$1"
     echo
     cd "$dirName"
-    if [ -e "author" ] ; then
-        echo "${green}Found author file${nc}"
+    if [ -e "author" ] & [ $(cat -e author | sed -n '$s/.*\(.\)$/\1/p') ==  "$" ] ; then
+        echo "${green}Author file passes!${nc}"
     else
-        echo "${red}Missing author file!${nc}"
+        echo "${red}Author file missing or invalid!${nc}"
     fi
     if make re >/dev/null ; then
         if make fclean >/dev/null ; then
