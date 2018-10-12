@@ -17,7 +17,7 @@ else
         m1=$(md5 "$filename")
     fi
 
-    git clean -f
+    git clean -fd
     git reset --hard origin/master
 
     if [[ $(uname -s) == Linux ]] ; then
