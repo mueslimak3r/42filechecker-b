@@ -7,31 +7,31 @@ nc='\033[0m'
 green='\033[01;32m'
 dirName="$1"
 if [ -e "$dirName" ] ; then
-    sh scripts/tools/norme.sh "$1"
+    bash scripts/tools/norme.sh "$1"
     echo
     cd "$dirName"
     if [ -e "author" ] ; then
         if [ $(cat -e author | sed -n '$s/.*\(.\)$/\1/p') ==  "$" ] ; then
-            echo "${green}Author file passes!${nc}"
+            echo -e "${green}Author file passes!${nc}"
         else
-            echo "${red}Author file found but is invalid!${nc}"
+            echo -e "${red}Author file found but is invalid!${nc}"
         fi
     else
-        echo "${red}Author file is missing!${nc}"
+        echo -e "${red}Author file is missing!${nc}"
     fi
     if make re >/dev/null ; then
         if make fclean >/dev/null ; then
-            echo "${green}Passed makefile test${nc}"
+            echo -e "${green}Passed makefile test${nc}"
             make re >/dev/null && make clean >/dev/null
         else
-            echo "${red}Make fclean error!${nc}"
+            echo -e "${red}Make fclean error!${nc}"
         fi
     else
-        echo "${red}Make re error!${nc}"
+        echo -e "${red}Make re error!${nc}"
         exit 1
     fi
 else
-    echo "${red}Project not found! Use ${nc}./run [projName] [projPath]"
+    echo -e "${red}Project not found! Use ${nc}./run [projName] [projPath]"
     exit 1
 fi
 
@@ -45,7 +45,7 @@ touch logs/refLog
 if ./b_ls | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
     ls | tr '\r\n' ' ' | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
-    echo "${red}Runtime error!${nc}"
+    echo -e "${red}Runtime error!${nc}"
     rm -rf b_ls.dSYM
     exit 1
 fi
@@ -53,7 +53,7 @@ fi
 if ./b_ls -atl | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
     ls -atl -- | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
-    echo "${red}Runtime error!${nc}"
+    echo -e "${red}Runtime error!${nc}"
     rm -rf b_ls.dSYM
     exit 1
 fi
@@ -61,7 +61,7 @@ fi
 if ./b_ls -atlr -- | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
     ls -atlr -- | cat -e | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
-    echo "${red}Runtime error!${nc}"
+    echo -e "${red}Runtime error!${nc}"
     rm -rf b_ls.dSYM
     exit 1
 fi
@@ -78,7 +78,7 @@ touch ac/afile ac/cfile
 if ./b_ls -tlr -- ac za ab | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/yourLog; then
     ls -tlr -- ac za ab | awk {'print $1,$2,$3,$4,$5,$6,$7,$8,$9'} >> logs/refLog
 else
-    echo "${red}Runtime error!${nc}"
+    echo -e "${red}Runtime error!${nc}"
     rm -rf b_ls.dSYM
     rm -rf ab ac
     exit 1
@@ -90,8 +90,8 @@ rm -rf ab ac za
 
 DIFF=$(diff logs/yourLog logs/refLog)
 if [ "$DIFF" == "" ] ; then
-    echo "${green}Passed!${nc}" && echo
+    echo -e "${green}Passed!${nc}" && echo
 else
-    echo "${red}Outputs don't match! Check log files in project directory${nc}"
+    echo -e "${red}Outputs don't match! Check log files in project directory${nc}"
 fi
 rm -rf b_ls.dSYM
