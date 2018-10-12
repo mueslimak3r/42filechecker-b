@@ -19,8 +19,8 @@ To test your projects navigate to the root of b_filechecker's directory and run:
 
 Debugging options:
 			
-			cleanup	-removes log files-			../b_libft
-			getnew	-forces an update-
+			cleanup		-removes log files-		../b_libft
+			getnew		-forces an update-
 
 ### What the tests do
 
