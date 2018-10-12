@@ -13,7 +13,7 @@ else
     warnings=$(grep -c "^Warning" norm_save)
     errs=$(grep -c "^Error" norm_save)
     cat norm_save
-    echo "You have $warnings ${yellow}warning(s)${nc}"
+    echo && echo "You have $warnings ${yellow}warning(s)${nc}"
     echo "You have $errs ${red}error(s)${nc}"
     rm -f norm_save
 fi
