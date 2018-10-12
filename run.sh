@@ -5,29 +5,29 @@ green='\033[01;32m'
 
 if [ "$3" != "offline" ] ; then
 
-echo && echo -e "${green}checking for updates${NC}"
+    echo && echo -e "${green}checking for updates${NC}"
 
-filename="run.sh"
-if [[ $(uname -s) == Linux ]]
-then
-    m1=$(md5sum "$filename")
-else
-    m1=$(md5 "$filename")
-fi
+    filename="run.sh"
+    if [[ $(uname -s) == Linux ]]
+    then
+        m1=$(md5sum "$filename")
+    else
+        m1=$(md5 "$filename")
+    fi
 
-git clean -f
-git reset --hard origin/master
+    git clean -f
+    git reset --hard origin/master
 
-if [[ $(uname -s) == Linux ]]
-then
-    m2=$(md5sum "$filename")
-else
-    m2=$(md5 "$filename")
-fi
-if [ "$m1" != "$m2" ] ; then
-    echo -e "${red}updated. relaunching${NC}"
-    ./run.sh "$1" "$2"
-    exit 0
+    if [[ $(uname -s) == Linux ]]
+    then
+        m2=$(md5sum "$filename")
+    else
+        m2=$(md5 "$filename")
+    fi
+    if [ "$m1" != "$m2" ] ; then
+        echo -e "${red}updated. relaunching${NC}"
+        ./run.sh "$1" "$2"
+        exit 0
 fi
 
 echo -e "${green}finished update check${NC}" && echo
