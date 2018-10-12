@@ -18,8 +18,8 @@ else
     fi
 
     git fetch --all
-    git clean -fd
-    git reset --hard origin/master
+    git checkout .
+    git pull
 
     if [[ $(uname -s) == Linux ]] ; then
         m2=$(md5sum "$filename")
