@@ -92,6 +92,6 @@ DIFF=$(diff logs/yourLog logs/refLog)
 if [ "$DIFF" == "" ] ; then
     echo -e "${green}Passed!${nc}" && echo
 else
-    echo -e "${red}Outputs don't match! Check log files in project directory${nc}"
+    echo -e "${red}Outputs dont match! Run ${nc}\"./run.sh diff "$1"\"${red} to view output${nc}"
 fi
 rm -rf b_ls.dSYM

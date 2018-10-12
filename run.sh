@@ -38,10 +38,28 @@ case $1 in
     "b_libft" ) bash scripts/b_libft/b_libft.sh "$2";;
     "b_printf" ) bash scripts/b_printf/b_printf.sh "$2";;
     "b_ls" ) bash scripts/b_ls/b_ls.sh "$2";;
+    "diff" )
+            if [ -e "$2" ] ; then
+                cd "$2"
+                diff "logs/yourLog" "logs/refLog" > /dev/null 2>&1
+                error=$?
+                if [ $error -eq 0 ] ; then
+                    echo -e "${green}Passed!${NC}"
+                    echo
+                elif [ $error -eq 1 ] ; then
+                    diff "logs/yourLog" "logs/refLog" | cat
+                else
+                    echo -e "${red}Something went wrong.${NC}"
+                    exit 1
+                fi
+            else
+                echo -e "${red}Project not found!${NC}"
+                exit 1
+            fi;;
     "cleanup" )
-        if [ -e "$2" ] ; then
+            if [ -e "$2" ] ; then
             cd "$2" && rm -rf logs
             make fclean
-        fi;;
+            fi;;
     * ) echo -e "${red}Invalid. Use ./run [projName] [projPath]${NC}";;
 esac
