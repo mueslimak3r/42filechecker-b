@@ -17,6 +17,11 @@ To test your projects navigate to the root of b_filechecker's directory and run:
 			b_printf					/tmp/b_printf
 			b_ls						etc...
 
+Debugging options:
+			
+			cleanup	-removes log files- ../b_libft
+			getnew	-forces an update-
+
 ### What the tests do
 
 I evaluate:
