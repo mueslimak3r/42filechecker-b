@@ -16,9 +16,13 @@ To test your projects navigate to the root of b_filechecker's directory and run:
 Debugging options:
 
 	[first param]							[third param]
-	cleanup	-clear log dir-		../b_libft
-	diff				../b_printf
-					-runs w/o syncing with github	offline
+	cleanup				../path/
+	diff				../path/
+	project name			../path/			offline
+
+			cleanup: removes "logs" folder from project directory.
+			diff: compares the last saved outputs with diff and displays them
+			offline: add this flag to supress auto updating
 
 
 ### What I evalue:
