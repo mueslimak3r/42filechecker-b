@@ -3,8 +3,9 @@ red='\033[1;31m'
 NC='\033[0m'
 green='\033[01;32m'
 
-if [ "$3" != "" ] ; then
-
+if [ "$3" != "offline" ] ; then
+    echo -e "${green}offline mode${NC}" && echo
+else
     echo && echo -e "${green}checking for updates${NC}"
 
     filename="run.sh"
@@ -28,9 +29,7 @@ if [ "$3" != "" ] ; then
         ./run.sh "$1" "$2"
         exit 0
         echo -e "${green}finished update check${NC}" && echo
-    fi
-else
-    echo -e "${green}offline mode${NC}" && echo
+    fi    
 fi
 
 case $1 in
