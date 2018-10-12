@@ -6,7 +6,7 @@ Project testing program for 42 boost projects.
 
 To test your projects navigate to the root of b_filechecker's directory and run:
 
-./run.sh [the test you want to run] [the path of your projects directory]
+./run.sh [the test you want to run] [the path of your projects directory] [offline]
 
 	[first param]			[second param]			[third param]
 	b_libft				../b_libft
