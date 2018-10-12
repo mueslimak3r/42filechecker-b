@@ -18,7 +18,7 @@ if [ -e "$dirName" ] ; then
     cat yourmain1.c >> yourmain.c
     rm -f yourmain1.c
     if [ -e "author" ] ; then
-        if [ $(cat -e author | sed -n '$s/.*\(.\)$/\1/p') ==  "$" ] ; then
+        if [ $(cat -e author | sed -n '$s/.*\(.\)$/\1/p') ==  "\$" ] ; then
             echo "${green}Author file passes!${nc}"
         else
             echo "${red}Author file found but is invalid!${nc}"
