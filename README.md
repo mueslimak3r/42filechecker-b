@@ -17,7 +17,7 @@ Debugging options:
 
 	[first param]							[third param]
 	cleanup	-clear log dir-		../b_libft
-	diff						../b_printf
+	diff				../b_printf
 					-runs w/o syncing with github	offline
 
 
