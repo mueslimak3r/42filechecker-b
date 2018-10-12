@@ -20,9 +20,9 @@ Debugging options:
 	diff				../path/
 	project name			../path/			offline
 
-			cleanup: removes "logs" folder from project directory.
-			diff: compares the last saved outputs with diff and displays them
-			offline: add this flag to supress auto updating
+	cleanup: removes "logs" folder from project directory.
+	diff: compares the last saved outputs with diff and displays them
+	offline: add this flag to supress auto updating
 
 
 ### What I evalue:
