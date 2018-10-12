@@ -16,27 +16,27 @@ if [ -e "$dirName" ] ; then
     cd -- "$dirName"
     if [ -e "author" ] ; then
         if [ $(cat -e author | sed -n '$s/.*\(.\)$/\1/p') ==  "$" ] ; then
-            echo "${green}Author file passes!${nc}"
+            echo -e "${green}Author file passes!${nc}"
         else
-            echo "${red}Author file found but is invalid!${nc}"
+            echo -e "${red}Author file found but is invalid!${nc}"
         fi
     else
-        echo "${red}Author file is missing!${nc}"
+        echo -e "${red}Author file is missing!${nc}"
     fi
     if make re >/dev/null ; then
         if make fclean >/dev/null ; then
-            echo "${green}Passed makefile test${nc}"
+            echo -e "${green}Passed makefile test${nc}"
             make re >/dev/null && make clean >/dev/null
         else
-            echo "${red}Make fclean error!${nc}"
+            echo -e "${red}Make fclean error!${nc}"
         fi
     else
-        echo "${red}Make re error!${nc}"
+        echo -e "${red}Make re error!${nc}"
         rm -rf yourmain.c refmain.c
         exit 1
     fi
 else
-    echo "${red}Project not found! Use ${nc}./run [projName] [projPath]"
+    echo -e "${red}Project not found! Use ${nc}./run [projName] [projPath]"
     exit 1
 fi
 
@@ -49,12 +49,12 @@ if gcc -g -fsanitize=address -Wall -Wextra -Werror yourmain.c libft.a -o yourPro
         gcc -g -fsanitize=address -Wall -Wextra -Werror refmain.c -o refProg
         rm -rf yourmain.c refmain.c yourProg.dSYM
     else
-        echo "${red}Runtime error!${nc}"
+        echo -e "${red}Runtime error!${nc}"
         rm -rf yourmain.c refmain.c yourProg.dSYM
         exit 1
     fi
 else
-    echo "${red}Compile error!${nc}"
+    echo -e "${red}Compile error!${nc}"
     rm -rf yourmain.c refmain.c yourProg.dSYM
     exit 1
 fi
@@ -65,7 +65,7 @@ fi
 DIFF=$(diff logs/yourLog logs/refLog)
 
 if [ "$DIFF" = "" ] ; then
-    echo "${green}Passed!${nc}" && echo
+    echo -e "${green}Passed!${nc}" && echo
 else
     echo -e "${red}Outputs dont match! Run ${nc}\"./run.sh diff "$1"\"${red} to view output${nc}"
 fi
