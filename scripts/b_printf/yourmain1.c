@@ -3,6 +3,8 @@
 #include <limits.h>
 #include <errno.h>
 
+int			b_printf(const char *format, ...);
+
 int			main(void)
 {
 	int  max = INT_MAX;

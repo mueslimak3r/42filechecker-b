@@ -13,12 +13,12 @@ if [ -e "$dirName" ] ; then
     echo
     cp "$yourtest" "$dirName"
     cp -- "$reftest" "$dirName"
-    sh scripts/b_printf/getheader.sh "$1"
+#   sh scripts/b_printf/getheader.sh "$1"
     cd -- "$dirName"
     cat yourmain1.c >> yourmain.c
     rm -f yourmain1.c
-    if [ -e "author" ] ; then
-        echo "${green}Found author file${nc}"
+    if [ -e "author" ] & [ $(cat -e author | sed -n '$s/.*\(.\)$/\1/p') ==  "$" ] ; then
+        echo "${green}Author file passes!${nc}"
     else
         echo "${red}Missing author file!${nc}"
     fi
