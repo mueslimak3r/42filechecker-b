@@ -1,10 +1,11 @@
 #!/bin/bash
+
 red='\033[1;31m' 
 NC='\033[0m'
 green='\033[01;32m'
 
 if [ "$3" == "offline" ] | [ "$1" == "diff" ] ; then
-    echo -e "${green}offline mode${NC}" && echo
+    echo && echo -e "${green}offline mode${NC}" && echo
 else
     echo && echo -e "${green}use${NC} \"./run.sh "$1" "$2" offline\"${green} to suppress updates${NC}"
     echo && echo -e "${green}checking for updates${NC}"
