@@ -17,6 +17,7 @@ else
         m1=$(md5 "$filename")
     fi
 
+    git fetch -all
     git clean -fd
     git reset --hard origin/master
 
