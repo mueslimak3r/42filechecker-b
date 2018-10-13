@@ -45,17 +45,17 @@ case $1 in
                 diff "logs/yourLog" "logs/refLog" > /dev/null 2>&1
                 error=$?
                 if [ $error -eq 0 ] ; then
-                    echo -e "${green}Passed!${NC}"
+                    echo -e "${green}passed!${NC}"
                     echo
                 elif [ $error -eq 1 ] ; then
                     diff "logs/yourLog" "logs/refLog" | cat
                     echo
                 else
-                    echo -e "${red}Something went wrong!${NC}"
+                    echo -e "${red}something went wrong!${NC}"
                     exit 1
                 fi
             else
-                echo -e "${red}Project not found!${NC}"
+                echo -e "${red}project not found!${NC}"
                 exit 1
             fi;;
     "cleanup" )
@@ -63,5 +63,5 @@ case $1 in
             cd "$2" && rm -rf logs
             make fclean
             fi;;
-    * ) echo -e "${red}Usage: ./run [projName] [projPath]${NC}";;
+    * ) echo -e "${red}usage: ./run [projName] [projPath]${NC}";;
 esac
