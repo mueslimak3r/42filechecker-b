@@ -18,6 +18,7 @@ else
         m1=$(md5 "$filename")
     fi
 
+    git fetch
     git clean -dx
     git pull
 
