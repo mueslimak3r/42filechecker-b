@@ -17,10 +17,12 @@ else
     else
         m1=$(md5 "$filename")
     fi
+    git reset hash
 
-    git fetch --all
-    git checkout .
-    git pull
+    git fetch upstream
+    git checkout master
+    git merge upstream/master
+    git push origin master -f
 
     if [[ $(uname -s) == Linux ]] ; then
         m2=$(md5sum "$filename")
