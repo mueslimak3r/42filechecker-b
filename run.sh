@@ -45,11 +45,20 @@ case $1 in
                 diff "logs/yourLog" "logs/refLog" > /dev/null 2>&1
                 error=$?
                 if [ $error -eq 0 ] ; then
-                    echo -e "${green}passed!${NC}"
+                    echo -e "${green}your log:${NC}"
+                    echo && cat logs/yourLog
+                    echo && echo && echo -e "${green}ref log:${NC}"
+                    echo && cat logs/refLog
+                    echo && echo && echo -e "${green}passed!${NC}"
                     echo
                 elif [ $error -eq 1 ] ; then
-                    diff "logs/yourLog" "logs/refLog" | cat
-                    echo
+                    echo -e "${red}your log:${NC}"
+                    echo && cat logs/yourLog
+                    echo && echo && echo -e "${green}ref log:${NC}"
+                    echo && cat logs/refLog
+                    echo && echo && echo -e "${red}diff:${NC}"
+                    echo && diff "logs/yourLog" "logs/refLog" | cat
+                    echo && echo -e "${red}outputs dont match!${NC}" && echo
                 else
                     echo -e "${red}something went wrong!${NC}"
                     exit 1
