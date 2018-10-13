@@ -19,7 +19,7 @@ else
     fi
 
     git fetch
-    git clean -dx
+    git clean -dfx
     git pull
 
     if [[ $(uname -s) == Linux ]] ; then
