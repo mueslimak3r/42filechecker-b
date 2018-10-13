@@ -63,5 +63,5 @@ case $1 in
             cd "$2" && rm -rf logs
             make fclean
             fi;;
-    * ) echo -e "${red}usage: ./run [projName] [projPath]${NC}";;
+    * ) echo -e "${red}usage: ./run.sh [projName] [projPath]${NC}";;
 esac
