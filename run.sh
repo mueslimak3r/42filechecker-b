@@ -18,8 +18,7 @@ else
         m1=$(md5 "$filename")
     fi
 
-    git fetch --all
-    git checkout .
+    git clean -dx
     git pull
 
     if [[ $(uname -s) == Linux ]] ; then
