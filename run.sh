@@ -56,7 +56,7 @@ case $1 in
                     echo && cat logs/yourLog
                     echo && echo && echo -e "${green}ref log:${NC}"
                     echo && cat logs/refLog
-                    echo && echo && echo -e "${red}diff:${NC}"
+                    echo && echo && echo -e "${red}diff (yours is on top):${NC}"
                     echo && diff "logs/yourLog" "logs/refLog" | cat
                     echo && echo -e "${red}outputs dont match!${NC}" && echo
                 else

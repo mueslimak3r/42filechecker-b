@@ -5,6 +5,7 @@ green='\033[01;32m'
 yellow='\033[0;33m'
 cd $1
 rm -rf refLog yourLog logs refProg.dSYM yourProg.dSYM
+rm -rf /tmp/testdir_a /tmp/testdir_b /tmp/testdir_c
 if [[ $(command -v norminette | grep -e "") == "" ]] ; then
     echo -e "${red}No norminette :'(${nc}"
 else
