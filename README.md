@@ -36,8 +36,8 @@ The functionality of your programs/functions compared to the functionality of th
 
 ### Adding your own tests:
 
-1. Make a copy of one of the project's folder in the /scripts/ folder and rename it and it's .sh file.
-2. Add your project to the run.sh file under line 38 with the rest of the projects.
+1. Make a copy of one of the project's folder in /scripts/ and rename it and it's .sh file.
+2. Add your project to the run.sh file (in root dir) under line 38 with the rest of the projects.
 3. Edit your new project's .sh file and it's main.c files if you need to.
 
 ## Author
